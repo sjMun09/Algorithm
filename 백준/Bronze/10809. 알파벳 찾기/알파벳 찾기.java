@@ -1,29 +1,30 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
- 
+import java.util.StringTokenizer;
+
 public class Main {
- 
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
- 
- 
-		int[] arr = new int[26];
-		
-		for(int i = 0; i < arr.length; i++) {
-			arr[i] = -1;
-		}
- 
-		String S = in.nextLine();
- 
-		for(int i = 0; i < S.length(); i++) {
-			char ch = S.charAt(i);
-    
-			if(arr[ch - 'a'] == -1) {	// arr 원소 값이 -1 인 경우에만 초기화
-				arr[ch - 'a'] = i;
-			}
-		}
- 
-		for(int val : arr) {	// 배열 출력
-			System.out.print(val + " ");
-		}
-	}
+
+    public static void main(String[] args)  {
+        Scanner sc = new Scanner(System.in);
+
+        int[] arr = new int[26];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i]= -1;
+        }
+        String s = sc.nextLine(); //엔터 치기 전까지 받음
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+
+            if (arr[ch - 'a'] == -1) {
+                arr[ch - 'a'] =i;
+            }
+        }
+        for (int var : arr) {
+            System.out.print(var + " ");
+        }
+    }
 }
