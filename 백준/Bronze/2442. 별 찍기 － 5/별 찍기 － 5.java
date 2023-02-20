@@ -7,15 +7,16 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int n = Integer.parseInt(br.readLine());
-
+        StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= n; i++) {
-            for (int j =  1; j <= n-i; j++) {
-                System.out.print(" ");
+            for (int j = 1; j <= n - i; j++) {
+                sb.append(" ");
             }
-            for (int k = 1; k <= 2*i-1; k++) {
-                System.out.print("*");
+            for (int j = 1; j <= 2 * i - 1; j++) {
+                sb.append("*");
             }
-            System.out.println();
+            sb.append("\n");
         }
+        System.out.print(sb);
     }
 }
