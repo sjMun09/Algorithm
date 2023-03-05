@@ -6,19 +6,12 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        boolean[] arr = new boolean[42];
+
+        HashSet<Integer> hashSet = new HashSet<Integer>();
 
         for (int i = 0; i < 10; i++) {
-            arr[Integer.parseInt(br.readLine()) % 42] = true;
+            hashSet.add(Integer.parseInt(br.readLine()) % 42);
         }
-        int count = 0;
-        for (boolean value : arr) {
-//           value 가 true 라면
-            if (value) {
-                count++;
-            }
-        }
-        System.out.println(count);
-        
+        System.out.println(hashSet.size());
     }
 }
