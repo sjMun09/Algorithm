@@ -14,17 +14,9 @@ public class Main {
             arr[i] = Integer.parseInt(br.readLine());
         }
 
-        //소팅
-        for(int i = 0; i < N - 1; i++) {
-            for(int j = i + 1; j < N; j++) {
-                if(arr[i] > arr[j]) {
-                    int temp = arr[j];
-                    arr[j] = arr[i];
-                    arr[i] = temp;
-                }
-            }
-        }
-
+        // 정렬 메소드, 정렬해줌
+        Arrays.sort(arr);
+        // 출력문
         for(int val : arr) {
             System.out.println(val);
         }
