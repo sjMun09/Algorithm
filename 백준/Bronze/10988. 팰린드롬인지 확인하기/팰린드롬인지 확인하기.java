@@ -7,6 +7,7 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String str = br.readLine();
+        // 리버스 메서드 사용하기 위해서 stringBuilder 로 초기화
         StringBuilder sb = new StringBuilder(str);
         if (str.equals(sb.reverse().toString())) {
             System.out.print(1);
