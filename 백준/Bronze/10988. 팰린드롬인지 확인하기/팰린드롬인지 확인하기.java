@@ -6,15 +6,13 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        String index = br.readLine();
-        int mid = index.length() / 2;
-        int flag = 1;
-        for (int i = 0; i < mid; i++) {
-            if (index.charAt(i) != index.charAt(index.length() - 1 - i)) {
-                flag = 0;
-            }
+        String str = br.readLine();
+        StringBuilder sb = new StringBuilder(str);
+        if (str.equals(sb.reverse().toString())) {
+            System.out.print(1);
+        } else {
+            System.out.print(0);
         }
-        System.out.print(flag);
     }
 }
 
