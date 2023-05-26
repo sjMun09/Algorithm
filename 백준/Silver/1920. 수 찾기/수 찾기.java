@@ -37,22 +37,21 @@ public class Main{
          배열에서 목표 값을 찾으면 true를 반환하고, 목표 값이 없으면 false를 반환
         */
     }
-    public static boolean binarySearch(int[] arr, int target) {
-        int left = 0;
-        int right = arr.length - 1;
-
-        while (left <= right) {
-            int mid = (left + right) / 2;
-
-            if(arr[mid] == target) {
-                return true;
-            } else if (arr[mid] > target) {
-                right = mid - 1;
-            } else {
-                left = mid + 1;
+    public static boolean binarySearch(int[] arr, int target){
+        int left =0; // 초기에 배열 전체를 검색 대상이라고 가정하기 때문
+        int right = arr.length -1; // -1 뺀 이유 : 인덱스는 0시작
+        
+        while(left <=right){ // 검색 범위를 절반씩 자른다고 생각하면됨.
+            int mid = (left + right) / 2; // 검색 범위를 절반이 되도록 이동시키기 위함
+                if(arr[mid] == target) {
+                    return true;
+                } else if (arr[mid] > target) {
+                    right = mid - 1; // 목표 값은 중간 값보다 왼쪽에 있을 수 있음
+                } else {
+                    left = mid + 1; // 목표 값은 중간 값보다 오른쪽에 있을 수 있음
+                }
             }
-        }
-        return false;
+            return false;   
     }
 }
 
