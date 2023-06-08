@@ -1,5 +1,4 @@
 import java.io.*;
-import java.math.BigInteger;
 import java.util.*;
 
 public class Main {
@@ -7,9 +6,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int sum = 0; // 일곱 난쟁이의 키의 합
+        
         for (int i = 0; i < 9; i++) {            
-height[i] = Integer.parseInt(br.readLine());
-            sum += height[i];        }
+            height[i] = Integer.parseInt(br.readLine());
+            sum += height[i];        
+        }
 
         Arrays.sort(height); //  오름차순으로 정렬.
 
