@@ -11,14 +11,24 @@ class Main {
 
     static void change(String num) {
         StringBuilder sb = new StringBuilder();
+        int len = num.length();
 
-        int remainder = num.length() % 3;
-        if (remainder > 0) {
-            sb.append(Integer.toOctalString(Integer.parseInt(num.substring(0, remainder), 2)));
+        // 입력값의 길이가 3으로 나누어 떨어지지 않는 경우를 처리하기 위한 부분
+        int remainder = len % 3;
+        if (remainder != 0) {
+            int partialOctalValue = 0;
+            for (int i = 0; i < remainder; i++) {
+                partialOctalValue = partialOctalValue * 2 + (num.charAt(i) - '0');
+            }
+            sb.append(partialOctalValue);
         }
 
-        for (int i = remainder; i < num.length(); i += 3) {
-            sb.append(Integer.toOctalString(Integer.parseInt(num.substring(i, i + 3), 2)));
+        // 3자리씩 묶어서 처리하는 부분
+        for (int i = remainder; i < len; i += 3) {
+            int octalValue = (num.charAt(i) - '0') * 4
+                    + (num.charAt(i + 1) - '0') * 2
+                    + (num.charAt(i + 2) - '0');
+            sb.append(octalValue);
         }
 
         System.out.print(sb.toString());
