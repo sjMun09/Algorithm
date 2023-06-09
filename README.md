@@ -3,7 +3,7 @@
 
 ### 👉 The problem's difficulty is irrelevant 🏃‍♂️
 ### 🧑‍💻 Just do it. One solving question every day 🔥
-### I belive. Just follow those daily, and I am going to become an amazing developer
+### 💁‍♂️ I belive 🌻. Just follow those daily, and I am going to become an amazing developer 🌝
 
 
 
