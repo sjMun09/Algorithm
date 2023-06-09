@@ -1,4 +1,4 @@
-# 👺 No matter what you do, the only thing that remains is the algorithm‼️
+# 👺 No matter what you do, The only thing that remains is the algorithm‼️
 
 
 ### 👉 The problem's difficulty is irrelevant 🏃‍♂️
