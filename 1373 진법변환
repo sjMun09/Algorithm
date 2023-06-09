@@ -1,0 +1,45 @@
+import java.io.*;
+import java.util.*;
+
+
+class Main{
+    public static void main(String[] args) throws IOException {
+        // 2진수가 주어졌을 때, 8진수로 변환하여 출력하는방법
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String number = br.readLine();
+
+        change(number);
+
+    }
+    static void change(String num){
+        int decimalNumber = 0; // 10진수 reset
+
+        // 2진수를 10진수로 바꿔줌
+        for (int i = 0; i < num.length(); i++) {
+            decimalNumber = decimalNumber * 2 + (num.charAt(i) - '0');
+        }
+        /*
+        윗 부분을 이해하기 쉽게 추가 설명하겠습니다.
+        1. 문자열을 받아와서 인덱스 0부터 시작(즉, 문자열의 첫 부분부터 시작) ==> 좌->우 진행방향
+        2. Num.charAt(i)-'0'은 문자를 정수로 변환하는 거라고 보면됨. 이건 아스키 코드 값 참고.
+        --> 쉽게 말해서, '0'문자의 아스키 코드 값이 48이니까 '1'-'0' (49-48)은 1을 얻게 됨.
+        */
+
+        // 10 진수 8진수로
+        StringBuilder sb = new StringBuilder();
+        // 10 진수가 0이라면ㅡ, 8진수로 변환된 값도 0임 --> 예외처리. (이거 뻇을 때 틀렸어서.)
+        if (decimalNumber==0) sb.append("0");
+
+        while (decimalNumber >0) {
+            sb.insert(0, decimalNumber % 8);
+            decimalNumber /= 8;
+        }
+        /*
+        decimalNumber % 8 연산을 통해 10진수 값을 8로 나눈 나머지 값을 계산,
+        --> 이 계산 결과로 나온 값은 현재 8진수의 가장 우측 자릿수임
+        .insert(0, decimalNumber % 8); //  8진수로 변환된 수의 맨 앞에 (인덱스 0 위치) 계산한 나머지 값을 추가함.
+        이 과정을 decimalNumber 가 0이 될 때까지 반복으로 8진수로 변환해줌ㅇ
+         */
+        System.out.print(sb.toString());
+    }
+}
