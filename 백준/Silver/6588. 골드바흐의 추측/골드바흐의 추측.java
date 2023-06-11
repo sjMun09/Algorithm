@@ -10,7 +10,7 @@ public class Main {
         int MAX = 1000000;
         boolean[] is_prime = new boolean[MAX + 1];
 
-        // 에라토스테네스의 체를 사용하여 소수 처리
+        // 소수 찾기 (에레스토체)
         Arrays.fill(is_prime, true);
         is_prime[0] = is_prime[1] = false;
         for (int i = 2; i * i <= MAX; i++) {
