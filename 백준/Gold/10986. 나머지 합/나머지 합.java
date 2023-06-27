@@ -24,6 +24,12 @@ class Main {
                 answer = answer + (C[i] * (C[i] - 1) / 2);
             }
         }
-        System.out.print(answer);
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuilder sb = new StringBuilder();
+        sb.append(answer);
+        bw.write(sb.toString());
+        bw.flush();
+        bw.close();
+        br.close();
     }
 }
