@@ -1,24 +1,29 @@
 import java.io.*;
-import java.math.BigInteger;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
+        // Bubble 정렬 -- > Arrays.sort() 사용 x
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         int N = Integer.parseInt(br.readLine());
         int[] arr = new int[N];
-
-        for(int i = 0; i < N; i++) {
+        // input
+        for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(br.readLine());
         }
-
-        // 정렬 메소드, 정렬해줌
-        Arrays.sort(arr);
-        // 출력문
-        for(int val : arr) {
-            System.out.println(val);
+        // sorting
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N - 1; j++) {
+                // import logic
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        for (int i = 0; i < N; i++) {
+            System.out.print(arr[i]+"\n");
         }
     }
 }
