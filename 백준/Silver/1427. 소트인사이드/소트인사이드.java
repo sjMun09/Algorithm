@@ -1,17 +1,30 @@
-import java.util.*;
 import java.io.*;
-
-class Main{
+public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        char[] n = br.readLine().toCharArray();
-        Arrays.sort(n);
-        for (int i = n.length - 1; i >= 0; i--) {
-            bw.write(n[i]);
+        String num = br.readLine();
+        int len = num.length();
+        int[] arr = new int[len];
+
+        for (int i = 0; i < len; i++) {
+            arr[i] = num.charAt(i) - '0';
         }
-        bw.flush();
-        bw.close();
-        br.close();
+
+        //선택정렬
+        for (int i = 0; i < len - 1; i++) {
+            int maxIdx = i;
+            for (int j = i + 1; j < len; j++) {
+                if (arr[maxIdx] < arr[j]) {
+                    maxIdx = j;
+                }
+            }
+            int temp = arr[i];
+            arr[i] = arr[maxIdx];
+            arr[maxIdx] = temp;
+        }
+
+        for (int i : arr) {
+            System.out.print(i);
+        }
     }
 }
