@@ -3,10 +3,12 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         Queue<Integer> myQueue = new LinkedList<>();
-        int N = sc.nextInt();
-        for (int i = 1; i <= N; i++) myQueue.add(i);
+        int N = Integer.parseInt(br.readLine());
+        for (int i = 1; i <= N; i++) {
+            myQueue.add(i);
+        }
         while (myQueue.size() > 1) {
             myQueue.poll();
             myQueue.add(myQueue.poll());
