@@ -1,74 +1,71 @@
 import java.io.*;
 import java.util.*;
-// merge 정렬로 풀기
+// merge
 public class Main {
-	
-	static int[] A, tmp;
-	static int count = 0;
-	static int result = -1;
-	static int K;
-	
-	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = new StringTokenizer(br.readLine());
-		
-		int N = Integer.parseInt(st.nextToken());
-		K = Integer.parseInt(st.nextToken());
-		
-		st = new StringTokenizer(br.readLine());
-		
-		A = new int[N];
-		for(int i = 0; i < N; i++) {
-			A[i] = Integer.parseInt(st.nextToken());
-		}
-		tmp = new int[N];
-		merge_sort(A, 0, N - 1);
-		System.out.println(result);
-		
-	}
-	
-	public static void merge_sort(int[] A, int p, int r) {
-		if (count > K) return ;
-		if (p < r) {
-			int q = (p + r) / 2;
-			merge_sort(A, p, q);
-			merge_sort(A, q + 1, r);
-			merge(A, p, q, r);
-		}
-	}
-	
-	public static void merge(int[] A, int p, int q, int r) {
-		int i = p;
-		int j = q + 1;
-		int t = 0;
-		
-		while (i <= q && j <= r) {
-			if(A[i] <= A[j]) {
-				tmp[t] = A[i];
-				i++;
-			}else {
-				tmp[t] = A[j];
-				j++;
-			}
-			t++;
-		}
-		
-		while (i <= q) 
-			tmp[t++] = A[i++];
+    static int[] temp;
+    static int count = 0;
+    static int K;
+    static int result = -1;
 
-		while (j <= r) 
-			tmp[t++] = A[j++];
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int num = Integer.parseInt(st.nextToken());
+        int[] arr = new int[num];
+        
+        K = Integer.parseInt(st.nextToken());
 
-		i = p;
-		t = 0;
-		while (i <= r) {
-			count++;
-			if (count == K) {
-				result = tmp[t];
-				break;
-			} 
-			A[i++] = tmp[t++];
-		}
-	}
-	
+        temp = new int[num];
+        
+        st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < num; i++) {
+            arr[i] = Integer.parseInt(st.nextToken());
+        }
+
+        merge_sort(arr, 0, arr.length - 1);
+        System.out.print(result);
+    }
+
+    static void merge_sort(int A[], int low, int high) {
+        if (low < high) {
+            int mid = (low + high) / 2;
+            merge_sort(A, low, mid);
+            merge_sort(A, mid + 1, high);
+            merge(A, low, mid, high);
+        }
+    }
+
+    static void merge(int A[], int low, int mid, int high) {
+        int i = low;
+        int j = mid + 1;
+        int t = 0;
+
+        while (i <= mid && j <= high) {
+            if (A[i] <= A[j]) {
+                temp[t++] = A[i++];
+            } else {
+                temp[t++] = A[j++];
+            }
+        }
+
+        while (i <= mid) {
+            temp[t++] = A[i++];
+        }
+
+        while (j <= high) {
+            temp[t++] = A[j++];
+        }
+
+        t = 0;
+        i = low;
+
+        while (i <= high) {
+            count++;
+            if (count == K) {
+                result = temp[t];
+                break;
+            }
+            A[i++] = temp[t++];
+        }
+    }
 }
