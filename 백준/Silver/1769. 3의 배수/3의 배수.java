@@ -1,27 +1,32 @@
 import java.io.*;
-
-public class Main {
-    public static void main(String[] args) throws IOException {
+class Main{
+    public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String input = br.readLine();
-        br.close();
-
-        int count = 0;
-        while (input.length() > 1) {
-            int sum = 0;
-            for (int i = 0; i < input.length(); i++) {
-                sum += input.charAt(i) - '0';
-            }
-            input = Integer.toString(sum);
-            count++;
+        int a, cnt = 1, sum = 0, last = -1;
+        while((a = br.read() - '0') >= 0 ) {
+            sum += a;
+            last = a;
+        }
+        if(sum==last) {
+            System.out.println(0);
+            System.out.println(sum%3==0 ? "YES" : "NO");
+            return;
         }
 
-        System.out.println(count);
-
-        if (Integer.parseInt(input) % 3 == 0) {
-            System.out.println("YES");
-        } else {
-            System.out.println("NO");
+        while(sum/10 != 0) {
+            cnt++;
+            sum = sumMethod(sum);
         }
+        System.out.println(cnt);
+        System.out.print(sum%3==0 ? "YES" : "NO");
+    }
+    private static int sumMethod(int val) {
+        int result = val%10, tmp, quot = val/10;
+        while(quot != 0) {
+            tmp = quot%10;
+            result += tmp;
+            quot /= 10;
+        }
+        return result;
     }
 }
