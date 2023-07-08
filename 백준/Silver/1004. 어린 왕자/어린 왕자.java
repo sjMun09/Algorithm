@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.StringTokenizer;
 
 public class Main {
+    // 자세한 설명 : https://dokeeo.tistory.com/17 --> 복습 필요함.
     public static void main(String[] args)throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T, n, x1, y1, x2, y2, cx, cy, r,cnt;
