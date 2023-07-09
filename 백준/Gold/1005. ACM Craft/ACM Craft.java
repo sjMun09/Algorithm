@@ -9,10 +9,11 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
         int T = Integer.parseInt(br.readLine());
 
         for (int testCase = 0; testCase < T; testCase++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
+            st = new StringTokenizer(br.readLine());
             N = Integer.parseInt(st.nextToken());
             int K = Integer.parseInt(st.nextToken());
 
@@ -35,11 +36,11 @@ public class Main {
             }
 
             int W = Integer.parseInt(br.readLine());
-            System.out.println(bfs(W));
+            System.out.print(bfs(W)+"\n");
         }
     }
 
-    public static int bfs(int W) {
+    private static int bfs(int W) {
         int[] result = Arrays.copyOf(time, N + 1);
         Queue<Integer> queue = new LinkedList<>();
 
@@ -61,7 +62,6 @@ public class Main {
                 }
             }
         }
-
         return result[W];
     }
 }
