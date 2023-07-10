@@ -1,23 +1,70 @@
 import java.io.BufferedReader;
-import java.io.IOException;
+import java.io.BufferedWriter;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+import java.io.OutputStreamWriter;
+import java.io.IOException;
 
-public class Main{
-
+public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
-        int N = Integer.parseInt(br.readLine());
-        int[] arr = new int[N];
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        for (int i = 0; i < arr.length; i++) {
+        int n = Integer.parseInt(br.readLine());
+        int[] arr = new int[n];
+
+        for (int i = 0; i < n; i++) {
             arr[i] = Integer.parseInt(br.readLine());
         }
-        Arrays.sort(arr);
-        for (int i = 0; i < arr.length; i++) {
-            sb.append(arr[i]).append('\n');
+
+        radixSort(arr, n);
+
+        for (int i = 0; i < n; i++) {
+            bw.write(Integer.toString(arr[i]));
+            bw.newLine();
         }
-        System.out.println(sb);
+
+        br.close();
+        bw.flush();
+        bw.close();
+    }
+
+    private static void radixSort(int[] arr, int n) {
+        int max = getMax(arr, n);
+
+        for (int exp = 1; max / exp > 0; exp *= 10) {
+            countingSort(arr, n, exp);
+        }
+    }
+
+    private static int getMax(int[] arr, int n) {
+        int max = arr[0];
+
+        for (int i = 1; i < n; i++) {
+            max = Math.max(max, arr[i]);
+        }
+
+        return max;
+    }
+
+    private static void countingSort(int[] arr, int n, int exp) {
+        int[] output = new int[n];
+        int[] count = new int[10];
+
+        for (int i = 0; i < n; i++) {
+            count[(arr[i] / exp) % 10]++;
+        }
+
+        for (int i = 1; i < 10; i++) {
+            count[i] += count[i - 1];
+        }
+
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[(arr[i] / exp) % 10] - 1] = arr[i];
+            count[(arr[i] / exp) % 10]--;
+        }
+
+        for (int i = 0; i < n; i++) {
+            arr[i] = output[i];
+        }
     }
 }
