@@ -36,28 +36,28 @@ public class Main {
         BFS(V);
     }
         // vertex는 정점
-    public static void DFS(int vertex) {
-        visited[vertex] = true;
-        System.out.print(vertex + " ");
+    public static void DFS(int node) {
+        visited[node] = true;
+        System.out.print(node + " ");
 
         for (int i = 1; i <= N; i++) {
-            if (map[vertex][i] && !visited[i]) {
+            if (map[node][i] && !visited[i]) {
                 DFS(i);
             }
         }
     }
 
-    public static void BFS(int startVertex) {
+    public static void BFS(int startNode) {
         Queue<Integer> queue = new LinkedList<>();
-        queue.offer(startVertex);
-        visited[startVertex] = true;
+        queue.offer(startNode);
+        visited[startNode] = true;
 
         while (!queue.isEmpty()) {
-            int vertex = queue.poll();
-            System.out.print(vertex + " ");
+            int node = queue.poll();
+            System.out.print(node + " ");
 
             for (int i = 1; i <= N; i++) {
-                if (map[vertex][i] && !visited[i]) {
+                if (map[node][i] && !visited[i]) {
                     queue.offer(i);
                     visited[i] = true;
                 }
