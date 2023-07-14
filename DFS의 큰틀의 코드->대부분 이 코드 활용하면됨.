@@ -1,0 +1,52 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+import java.util.StringTokenizer;
+
+public class Main {
+    static int n;
+    static int[] input;
+    static boolean[] visited;
+    static int answer = 0;
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine().trim());
+        
+        n = Integer.parseInt(st.nextToken());
+        input = new int[n];
+        visited = new boolean[n];
+        
+        st = new StringTokenizer(br.readLine().trim());
+        for (int i = 0; i < n; i++) {
+            input[i] = Integer.parseInt(st.nextToken());
+        }
+        
+        dfs(0, 0);
+
+        System.out.println(answer);
+    }
+
+    public static void dfs(int depth, int sum) {
+        if (depth == n) {
+            if (isPossible(sum)) {
+                answer++;
+            }
+            return;
+        }
+
+        visited[depth] = true;
+        dfs(depth + 1, sum + input[depth]);
+        visited[depth] = false;
+        dfs(depth + 1, sum);
+    }
+
+    public static boolean isPossible(int sum) {
+        if (sum <= 1) return false;
+
+        for (int i = 2; i * i <= sum; i++) {
+            if (sum % i == 0) return false;
+        }
+        return true;
+    }
+}
