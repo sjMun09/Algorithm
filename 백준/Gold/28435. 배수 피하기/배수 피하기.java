@@ -8,8 +8,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
 
+        StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
 
@@ -22,13 +22,8 @@ public class Main {
 
         long ans = 1;
         for (int i = 1; i < (K + 1) / 2; i++) {
-            long pi = 1, pj = 1;
-            for (int k = 0; k < c[i]; k++) {
-                pi = pi * 2 % MOD;
-            }
-            for (int k = 0; k < c[K - i]; k++) {
-                pj = pj * 2 % MOD;
-            }
+            long pi = powMod(2, c[i], MOD);
+            long pj = powMod(2, c[K - i], MOD);
             ans = (ans * (pi + pj - 1)) % MOD;
         }
         ans = (ans * (c[0] + 1)) % MOD;
@@ -39,5 +34,17 @@ public class Main {
 
         ans = (ans + MOD - (N + 1)) % MOD;
         System.out.println(ans);
+    }
+
+    private static long powMod(long base, int exponent, int mod) {
+        long result = 1;
+        while (exponent > 0) {
+            if ((exponent & 1) == 1) {
+                result = (result * base) % mod;
+            }
+            base = (base * base) % mod;
+            exponent >>= 1;
+        }
+        return result;
     }
 }
