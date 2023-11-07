@@ -1,0 +1,21 @@
+import java.util.*;
+ // 정규 표현식
+public class Main {
+    
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        String vega = "(100+1+|01)+"; // 직녀성
+        int t = scan.nextInt(); // 버퍼리더를 썻었는데, 만약 버퍼리더를 쓴다면
+        // 토큰으로 읽어야할지 생각도 했는데 이어져서 입력값이 온다.
+        // 그렇다면 이럴땐 어떻게 처리를 해야하는가 ?
+        // 생각을 헀을 때, scan을 활용하는 것이 더욱 나을 것 같다.
+        // 따라서, 무조건적인 BuffereReader를 사용하는 것을 지양하는 것을 배우게 되었다.
+        
+        for(int i = 0; i < t; i++) {
+            String spread = scan.next();
+            if(spread.matches(vega)) System.out.println("YES");
+            else System.out.println("NO");
+        }
+    }
+}    
