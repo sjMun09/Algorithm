@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+            /*
+            1. 문자열을 입력 받을 때, 쪼개서 입력 받는다.
+            2. 문자열을 다 입력 받고 난 후 각 문자로 쪼갠다.
+            */
+            /*
+            static 을 메서드 앞에 붙이게 되면 메인 메서드엔 객체 생성이 필요없음.
+            즉, 메서드 앞에 붙는 static에 따라 무엇이 다른지 확실하게 공부하기.
+             */
+        String str = br.readLine();
+        if (str.length() < 100) {
+            String arrStr[] = str.split(br.readLine());
+            System.out.print(arrStr.length);
+        }
+    }
+}
