@@ -1,17 +1,17 @@
 import java.io.*;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-//      입력만 받음. => 어차피 byte[]로 변환하여 사용할 것이라서.
-        br.readLine();
-
+        int n = Integer.parseInt(br.readLine());
         int sum = 0;
-        for (byte N : br.readLine().getBytes()) {
-            sum += (N - '0'); // 이렇게 표현하거나 아니면 (a-48)을 해주면 원하는 값 도출 가능.(UTF-16 때문)
+        StringBuilder sb = new StringBuilder(br.readLine());
+
+        for (int i = 0; i < sb.length(); i++) {
+            sum += sb.charAt(i) - '0';
         }
-        System.out.println(sum);
+        System.out.print(sum);
+
     }
 }
