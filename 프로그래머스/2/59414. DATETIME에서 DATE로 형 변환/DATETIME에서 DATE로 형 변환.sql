@@ -1,0 +1,4 @@
+SELECT ANIMAL_ID, NAME, DATE_FORMAT(DATETIME, '%Y-%m-%d') AS 날짜
+FROM ANIMAL_INS
+-- 시각(시-분-초)을 제외한 날짜(년-월-일)만 
+ORDER BY ANIMAL_ID ASC;
